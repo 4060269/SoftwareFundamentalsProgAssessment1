@@ -1,0 +1,15 @@
+int ledPins[] = {2,3,4,5,6,7,8,9,10,11,12};
+int arraySize = sizeof(ledPins) / sizeof(int);
+
+void setup(){
+	Serial.begin(9600);
+    Serial.println(arraySize);
+}
+  
+void loop (){
+  for (int individualPin=2; individualPin < arraySize; individualPin++) {
+    int randomStrength = random(255);
+    analogWrite(ledPins[individualPin], randomStrength);
+	delay(5);	
+}
+} 
