@@ -6,6 +6,8 @@ int potValues[5];
 
 void setup(){
   Serial.begin(9600);
+  delay(150);
+  
   
   for (int i=0; i<5; i++){
     	pinMode(leds[i], OUTPUT);
@@ -31,14 +33,14 @@ void loop(){
   	}
   
   Serial.print("The average is : ");
-  float average = total / arraySize;
+  int average = total / arraySize;
+  average = map(average, 0, 1023, 0, 255);
   Serial.println(average);
-  delay(200);
-
   
   //led turn on and off threshold
   if (average >= 160){
   	for (int i=0; i<5; i++){
+   //   x = map(analogRead(potPins[i]), 0, 1023, 0, 255);
     digitalWrite(leds[i], HIGH);
     }
     
